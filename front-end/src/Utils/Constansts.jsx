@@ -1,0 +1,6 @@
+export const  ChatConstants = {
+    GROUP: 'GROUP',
+    USER: 'USER',
+    CHAT_USER_TYPING: 'CHAT_USER_TYPING',
+    GROUP_CHAT_USER_TYPING : 'GROUP_CHAT_USER_TYPING'
+}

@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5419b428.chunk.css",
+    "main.js": "/static/js/main.88c229d4.chunk.js",
+    "main.js.map": "/static/js/main.88c229d4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.199c6c34.js",
+    "runtime-main.js.map": "/static/js/runtime-main.199c6c34.js.map",
+    "static/css/2.7b1c032f.chunk.css": "/static/css/2.7b1c032f.chunk.css",
+    "static/js/2.099a23fc.chunk.js": "/static/js/2.099a23fc.chunk.js",
+    "static/js/2.099a23fc.chunk.js.map": "/static/js/2.099a23fc.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.7b1c032f.chunk.css.map": "/static/css/2.7b1c032f.chunk.css.map",
+    "static/css/main.5419b428.chunk.css.map": "/static/css/main.5419b428.chunk.css.map",
+    "static/js/2.099a23fc.chunk.js.LICENSE.txt": "/static/js/2.099a23fc.chunk.js.LICENSE.txt",
+    "static/media/ChatComponent.css": "/static/media/chat-backgroup-image.b09e82c9.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.199c6c34.js",
+    "static/css/2.7b1c032f.chunk.css",
+    "static/js/2.099a23fc.chunk.js",
+    "static/css/main.5419b428.chunk.css",
+    "static/js/main.88c229d4.chunk.js"
+  ]
+}

@@ -1,0 +1,25 @@
+.chat-dropdown-menu {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    min-width: 160px;
+    margin: 12px 10px 10px 113px;
+    font-size: 14px;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    background-clip: padding-box;
+}
+.chat-dropdown-option{
+    padding: 10px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid blanchedalmond;
+}
+.chat-dropdown-option:hover{
+    background-color:#e9ecef;
+    cursor: pointer;
+    
+}

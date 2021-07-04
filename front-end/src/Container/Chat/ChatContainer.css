@@ -1,0 +1,41 @@
+.chat-left{
+    /* border: 1px solid; */
+    float: left;
+    width: 20%;
+    /* padding: 10px; */
+    height: 625px;
+}
+
+.chat-middle{
+  /* border: 1px solid; */
+  float: left;
+  width: 60%;
+  /* padding: 10px; */
+  height: 625px;
+}
+.chat-right{
+    /* border: 1px solid; */
+    float: left;
+    width: 20%;
+    /* padding: 10px; */
+    height: 625px;
+}
+
+.chat-container{
+  width: 100%;
+}
+.chat-row{
+  flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) / 2);
+    padding-left: calc(var(--bs-gutter-x) / 2);
+    margin-top: var(--bs-gutter-y);
+}
+
+.user-profile-avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

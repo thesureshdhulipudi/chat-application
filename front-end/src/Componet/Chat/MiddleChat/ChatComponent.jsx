@@ -8,7 +8,7 @@ const ChatComponet = (props) => {
 
     const { oldChat, recipientUser, loginInfo, chats, chatType, users } = props;
     console.log(loginInfo)
-    const [messsage, setMessage] = useState({ messageText: '' });
+    const [messageText, setMessage] = useState('');
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
@@ -41,25 +41,25 @@ const ChatComponet = (props) => {
             msg = {
                 senderId: loginInfo.data.id,
                 recipientId: recipientUser.id,
-                content: messsage.messageText,
+                content: messageText,
                 chatId: oldChat.chatId
             };
         } else {
             msg = {
                 "chatRoomId": chats.chatRoomId,
-                "message": messsage.messageText,
+                "message": messageText,
                 "senderId": loginInfo.data.id
             }
         }
         props.sendMessage(msg, chatType);
         console.log("Message sent successfully", JSON.stringify(msg))
-        setMessage(prev => ({ ...prev, messageText: '' }))
+        // setMessage({messageText : "" });
+        
+          setMessage("")
+         
     };
     const handleInputChange = e => {
-        setMessage({
-            ...messsage,
-            [e.target.name]: e.target.value
-        })
+        setMessage(e.target.value)
         const id = chats.chatId !== null && chats.chatId ? chats.chatId : (chats.chatRoomId != null && chats.chatRoomId ? chats.chatRoomId : null);
         if (e.target.value.length >= 3 && id) {
             const typing = {
@@ -142,6 +142,14 @@ const ChatComponet = (props) => {
                 <div className="chat-title-group-name"> {chat.chatRoomName}</div>
                 <i className="fas fa-comment-alt"> </i>
             </div>);
+        } else if(recipientUser){
+            return (<div className="msger-header-title">
+                    {recipientUser.avatarUrl
+                        ? <img src={recipientUser.avatarUrl} alt="Avatar" className="chat-user-profile-avatar" style={{ float: 'left' }}></img>
+                        : <span className="chat-user-icon chat-title-user-icon" />}
+                    <div className="chat-title-user-name">{recipientUser.firstName + " " + recipientUser.lastName}</div>
+                    <i className="fas fa-comment-alt"></i>
+                </div>);
         }
     }
 
@@ -186,9 +194,14 @@ const ChatComponet = (props) => {
             return <div style={{ height: '23px' }}></div>;
         }
     }
+    const handleEnterKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            sendMessage(e);
+        }
+      }
     return (
 
-        <div classNameName="chat-message-container">
+        <div className="chat-message-container">
             <section className="msger">
                 {chatType ?
                     (<div>
@@ -219,10 +232,11 @@ const ChatComponet = (props) => {
 
                         </main>
                         {typing(chats)}
-                        <form className="msger-inputarea">
-                            <input type="text" className="msger-input" placeholder="Enter your message..." name="messageText" onChange={handleInputChange} />
-                            <button type="submit" className="msger-send-btn" onClick={sendMessage}>Send</button>
-                        </form>
+                        <div className="msger-inputarea">
+                            <input type="text" className="msger-input" placeholder="Enter your message..." value={messageText} name="messageText"  onKeyPress={handleEnterKeyPress} onChange={handleInputChange} />
+                            <span className="msger-send-btn" onClick={sendMessage} />
+                            {/* <button type="submit" className="msger-send-btn" onClick={sendMessage}>Send</button> */}
+                        </div>
                     </div>
                     )
                     : (<div className="chat-welcome-image"><div className="chat-welocme-msg" >Welcome to chat room</div></div>)}

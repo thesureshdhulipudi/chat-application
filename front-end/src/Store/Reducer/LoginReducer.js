@@ -7,14 +7,16 @@ export function loginReducer(state = {}, action) {
                 ...state,
                 isLogin: false,
                 data: null,
-                loginType: null
+                loginType: null,
+                message: null
             };
         }
         case StoreConstants.LOGIN_SUCCESS: {
             return {
                 ...state,
                 isLogin: true,
-                data: action.response
+                data: action.response,
+                message: null
             };
         }
         case StoreConstants.LOGIN_FAILED: {
@@ -22,7 +24,7 @@ export function loginReducer(state = {}, action) {
                 ...state,
                 isLogin: false,
                 data: action.response,
-                message:action.failedMessage
+                message:action.response.description
             };
         }
         default:

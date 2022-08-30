@@ -36,12 +36,17 @@
     margin: 8px;
 }
 .chat-welcome-image{
-    background-image: url(../../../images/chat-backgroup-image.jpg);
+    /* background-image: url(../../../images/chat-backgroup-image.jpg); */
     height: 625px;
+    background: rgb(0 0 0 / 13%);
 }
 .chat-welocme-msg{
     text-align: center;
     padding: 25% 25%;
     font-size: 35px;
     color: red;
+}
+
+.msger-header-title{
+    padding-left: 9px;
 }

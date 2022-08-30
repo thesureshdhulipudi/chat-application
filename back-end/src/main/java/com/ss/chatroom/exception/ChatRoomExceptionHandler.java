@@ -32,6 +32,12 @@ public class ChatRoomExceptionHandler extends ResponseEntityExceptionHandler {
 		return ResponseBuilderUtility.buildEntityResponse(ex.getCode(), null, ex.getMessage());
 	}
 	
+	@ExceptionHandler(DataNotFoundException.class)
+	public final ResponseEntity<ResponseModel> handleDataNotFoundExceptionException(DataNotFoundException ex, WebRequest request) {
+		ex.printStackTrace();
+		return ResponseBuilderUtility.buildEntityResponse(ex.getCode(), null, ex.getMessage());
+	}
+	
 	@ExceptionHandler(MessageSentFailedException.class)
 	public final ResponseEntity<ResponseModel> handleMessageSentFailedException(MessageSentFailedException ex, WebRequest request) {
 		ex.printStackTrace();

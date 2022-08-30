@@ -24,7 +24,7 @@ class UserOption extends React.Component {
                     index={this.props.id}
                     handleUser={this.handleChange}
                     chatUserProfile="chat-user-profile-group-create"
-                    chatUserIcon="chat-user-icon-group-create"
+                    chatUserIcon="chat-user-icon"
                     checked={this.state.selected}
                 />
                 </div>

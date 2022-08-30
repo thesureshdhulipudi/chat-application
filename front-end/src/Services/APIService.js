@@ -4,7 +4,7 @@ import { loginFailed, loginLoading, loginSuccss } from "../Store/Action/LoginAct
 import { signUpFailed, signUpLoading, signUpSuccss } from "../Store/Action/SignUpAction";
 import { fetchUsersFailed, fetchUsersLoading, fetchUsersSuccss } from "../Store/Action/UserAction";
 
-const BASE_URL = './api/';
+const BASE_URL = 'http://localhost:5000/api/';
 const API = {
     SIGN_UP: BASE_URL + 'user/signUp',
     SIGN_IN: BASE_URL + 'user/signIn',
@@ -33,9 +33,9 @@ export function signUpAPI(payload) {
         }).then(response => {
             console.log(response);
             if (response && response.statusCode === 0) {
-                dispatch(signUpSuccss(response.result[0]))
+                dispatch(signUpSuccss(response))
             } else {
-                dispatch(signUpFailed(response.description))
+                dispatch(signUpFailed(response))
             }
         }).catch(err => {
             console.log(err);
@@ -60,7 +60,7 @@ export function signInAPI(payload) {
             if (response && response.statusCode === 0) {
                 dispatch(loginSuccss(response.result[0]));
             } else {
-                dispatch(loginFailed(response.description))
+                dispatch(loginFailed(response))
             }
         }).catch(err => {
             console.log(err);

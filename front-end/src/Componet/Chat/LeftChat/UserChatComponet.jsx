@@ -109,7 +109,8 @@ const UserChatComponet = (props) => {
             ? typing(obj) 
             : <div  className="chat-left-last-sent">{getUser(obj.lastMessageSentBy).firstName + ": " + obj.lastMessage}</div>
             }
-            <div className="chat-left-msg-count">5</div>
+            <div className="chat-left-msg-count">
+                <span style={{textAlign: 'center',padding: '5px'}}>5</span></div>
         </div>)
     }
     return (

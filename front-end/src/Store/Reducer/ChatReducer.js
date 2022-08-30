@@ -207,15 +207,18 @@ export function chatMessageTypingStop(array,currentChat){
 export function sortChats(chats){
     if(chats && chats.length){
         for(var i=0;i<chats.length;i++){
-            chats[i].chatMessages = chats[i].chatMessages.sort((a,b) => new Date(b.messageTimestamp) - new Date(a.messageTimestamp));
-            chats[i] = {
-              ...chats[i],
-              "lastTimestamp": chats[i].chatMessages.length ? chats[i].chatMessages[0].messageTimestamp : chats[i].createdTimestamp,
-              "lastMessage": chats[i].chatMessages.length ? chats[i].chatMessages[0].message : "",
-              "lastMessageSentBy": chats[i].chatMessages.length ? chats[i].chatMessages[0].senderUserId : ""
+            if(chats[i].chatMessages){
+                chats[i].chatMessages = chats[i].chatMessages.sort((a,b) => new Date(b.messageTimestamp) - new Date(a.messageTimestamp));
+                chats[i] = {
+                  ...chats[i],
+                  "lastTimestamp": chats[i].chatMessages.length ? chats[i].chatMessages[0].messageTimestamp : chats[i].createdTimestamp,
+                  "lastMessage": chats[i].chatMessages.length ? chats[i].chatMessages[0].message : "",
+                  "lastMessageSentBy": chats[i].chatMessages.length ? chats[i].chatMessages[0].senderUserId : ""
+                }
+                chats[i].chatMessages = chats[i].chatMessages.sort((a,b) => new Date(a.messageTimestamp) - new Date(b.messageTimestamp));
+              }
             }
-            chats[i].chatMessages = chats[i].chatMessages.sort((a,b) => new Date(a.messageTimestamp) - new Date(b.messageTimestamp));
-          }
+            
           chats = chats.sort((a,b)=> new Date(b.lastTimestamp) - new Date(a.lastTimestamp));  
     }
     return chats;

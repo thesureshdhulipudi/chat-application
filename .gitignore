@@ -1,0 +1,26 @@
+# React
+node_modules
+coverage
+build
+/.tmp
+
+# Maven
+target
+.flattened-pom.xml
+${maven.multiModuleProjectDirectory}
+
+# Sonar
+.sonarqube
+
+# IDEs
+.idea
+*.iml
+.settings
+.classpath
+.project
+.factorypath
+.vscode
+.vs
+
+# Module-specific
+

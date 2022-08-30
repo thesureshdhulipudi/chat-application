@@ -1,9 +1,9 @@
 .chat-dropdown-menu {
     position: absolute;
-    left: 0;
+    /* left: 0; */
     z-index: 1000;
     min-width: 160px;
-    margin: 12px 10px 10px 113px;
+    margin: 0.9% 16%;
     font-size: 14px;
     list-style: none;
     background-color: #fff;

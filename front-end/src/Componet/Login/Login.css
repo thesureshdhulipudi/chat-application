@@ -1,5 +1,12 @@
 .login-container{
     width: 50%;
-    margin: auto;
+    margin: 0px 25px 10px 75px;
     padding: 10px;
+}
+.c-btn-sign-in{
+    width: 150%;
+}
+
+.c-sign-in-user-id,.c-sign-in-psw{
+    width: 150% !important;
 }

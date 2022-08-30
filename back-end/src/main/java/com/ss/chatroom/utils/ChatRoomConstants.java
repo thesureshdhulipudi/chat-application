@@ -7,7 +7,7 @@ public class ChatRoomConstants {
 	public static final int NOT_FOUND_ERROR_CODE = 2004;
 	public static final int UNKNOWN_ERROR_CODE = 2005;
 	public static final int DB_RELATED_ERROR_CODE = 2006;
-	public static final int DUPLICATE_RECORD_ERROR_CODE = 2007;
+	public static final int DUPLICATE_RECORD_ERROR_CODE = 409;
 	public static final int MSG_SENT_ERROR_CODE = 2008;
 	
 	public static final String UNKNOW_ERROR_MSG = "Unknow error occured";

@@ -7,7 +7,9 @@ export function signUpReducer(state = {}, action) {
                 ...state,
                 isLoading: true,
                 isError: false,
-                data: null
+                data: null,
+                message:null,
+                statusCode: null
             };
         }
         case StoreConstants.SIGNUP_SUCCESS: {
@@ -15,7 +17,9 @@ export function signUpReducer(state = {}, action) {
                 ...state,
                 isLoading: false,
                 isError: false,
-                data: action.response
+                data: action.response.result[0],
+                message:action.response.description,
+                statusCode: action.response.statusCode
             };
         }
         case StoreConstants.SIGNUP_FAILED: {
@@ -24,7 +28,8 @@ export function signUpReducer(state = {}, action) {
                 isLoading: false,
                 isError: true,
                 data: null,
-                message:action.failedMessage
+                message:action.response.description,
+                statusCode: action.response.statusCode
             };
         }
         default:

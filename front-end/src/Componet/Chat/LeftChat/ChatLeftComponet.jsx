@@ -5,13 +5,15 @@ import UserChatComponet from "./UserChatComponet";
 import './ChatLeft.css';
 import Dropdown from "../../UtilsComponets/DropDown";
 import { ChatConstants } from "../../../Utils/Constansts";
+import UsersComponent from "../RightChat/UsersComponent";
 
-const options = ["Create Group", "Settings"];
+const options = ["All Users", "Create Group", "Settings","Logout"];
 const ChatLeftComponet = (props) => {
 
     const { oldChat, recipientUser, loginInfo, chats, users } = props;
     const [openOptions, setOpenOptions] = useState(false);
     const [createGroup, setCreateGroup] = useState(false);
+    const [usersListPage, setusersListPage] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
         console.log("oldChat", oldChat)
@@ -24,7 +26,16 @@ const ChatLeftComponet = (props) => {
         props.openUserChat(chatObj, type);
     }
     const clickOpenOption = () => {
-        setOpenOptions(true);
+        setOpenOptions(prev=> !prev);
+    }
+    const handelCloseOpenOption = () => {
+        setOpenOptions(false);
+    }
+    
+    const closeOpenOption = () => {
+        setOpenOptions(false);
+        setusersListPage(false);
+        setCreateGroup(false);
     }
 
     const submitCreateGroup = (groupInfo) => {
@@ -33,14 +44,26 @@ const ChatLeftComponet = (props) => {
         props.submitCreateGroup(groupInfo);
     }
     const backFromCreateGroup = () => {
-        setCreateGroup(true);
+        setCreateGroup(false);
+        setusersListPage(false);
+        setOpenOptions(false);
     }
     const selectedItem = (item) => {
         console.log(item);
         setOpenOptions(false);
         if (item === "Create Group") {
             setCreateGroup(true);
+        }else if (item === "All Users") {
+            setusersListPage(true);
+        } else if (item === "Logout"){
+            window.location.reload();
         }
+    }
+
+    const startChat = (user) => {
+        console.log(user);
+        props.startChat(user);
+        closeOpenOption();
     }
     
     return (
@@ -71,7 +94,19 @@ const ChatLeftComponet = (props) => {
                     backFromCreateGroup={backFromCreateGroup}
                 />
                 :
-                (<div>
+                (usersListPage ? 
+                <div>
+                    <div className="chat-right">
+                    <UsersComponent
+                        startChat={startChat}
+                        loginInfo={loginInfo}
+                        users={users}
+                        closeOpenOption = {closeOpenOption}
+                        // chatType={chatType}
+                    />
+                </div>
+                </div> 
+                : (<div onClick={handelCloseOpenOption}>
                     <UserChatComponet
                         loginInfo={loginInfo}
                         chats={chats}
@@ -81,7 +116,7 @@ const ChatLeftComponet = (props) => {
                         openUserChat={openUserChat}
                         users={users}
                     />
-                </div>)
+                </div>))
             }
         </div>
     )

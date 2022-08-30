@@ -25,7 +25,7 @@ public class UserService {
 
 	public List<UserEntity> createUser(UserEntity userEntity) throws DuplicateRecordFoundException {
 		if(userRepo.findByUserId(userEntity.getUserId()).isPresent()) {
-			throw new DuplicateRecordFoundException("User Id: "+userEntity.getUserId()+" already exits",ChatRoomConstants.DUPLICATE_RECORD_ERROR_CODE);
+			throw new DuplicateRecordFoundException(userEntity.getUserId()+" already exits",ChatRoomConstants.DUPLICATE_RECORD_ERROR_CODE);
 		}
 		userEntity.setCreatedTimestamp(new Date());
 		userEntity.setLastLoginTimestamp(new Date());
@@ -70,7 +70,7 @@ public class UserService {
 		List<UserEntity> userEntities = new ArrayList<>();
 		Optional<UserEntity> userEntity = userRepo.findByUserIdAndPassword(userSignInModel.getUserId(),userSignInModel.getPassword());
 		if(!userEntity.isPresent()) {
-			throw new DataNotFoundException(null, 0);
+			throw new DataNotFoundException("Authentication failed, Invalid User", 404);
 		}
 		userEntities.add(userEntity.get());
 		userEntities.forEach(user->{

@@ -1,5 +1,15 @@
 .signup-container{
-    width: 50%;
+    width: 75%;
     margin: auto;
     padding: 10px;
+}
+/* .signup-form{
+    width: 80%;
+    margin: auto;
+} */
+.c-error{
+    color: red;
+}
+.c-success{
+    color: #0cc117;
 }

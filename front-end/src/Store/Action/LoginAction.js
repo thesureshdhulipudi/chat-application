@@ -13,10 +13,9 @@ export function loginSuccss(response) {
     }
 }
 
-export function loginFailed(response,faildMessage) {
+export function loginFailed(response) {
     return {
         type: StoreConstants.LOGIN_FAILED,
         response,
-        faildMessage
     }
 }

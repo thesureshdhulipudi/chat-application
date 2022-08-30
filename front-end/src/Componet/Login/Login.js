@@ -24,13 +24,15 @@ function Login(props) {
             <div className="login-form">
                 <div className="mb-3">
                     <label className="form-label">User Id</label>
-                    <input type="email" className="form-control" name="userId" onChange={handleInputChange} />
+                    <input type="email" className="form-control c-sign-in-user-id" name="userId" onChange={handleInputChange} />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password</label>
-                    <input type="password" className="form-control" name="password" onChange={handleInputChange} />
+                    <input type="password" className="form-control c-sign-in-psw" name="password" onChange={handleInputChange} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={login}>Sign In</button>
+                <div style={{paddingBottom: '10px',color:'red'}} ><span>{props.loginInfo.message}</span></div>
+                
+                <button type="submit" className="btn btn-primary c-btn-sign-in" onClick={login}>Login</button>
             </div>
 
             {/* <ThirdParty

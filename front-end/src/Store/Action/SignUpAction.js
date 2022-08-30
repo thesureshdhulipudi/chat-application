@@ -13,9 +13,9 @@ export function signUpSuccss(response) {
     }
 }
 
-export function signUpFailed(faildMessage) {
+export function signUpFailed(response) {
     return {
         type: StoreConstants.SIGNUP_FAILED,
-        faildMessage
+        response
     }
 }

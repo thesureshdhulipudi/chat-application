@@ -1,13 +1,14 @@
 import './ChatContainer.css';
 import ChatComponet from '../../Componet/Chat/MiddleChat/ChatComponent';
 import UsersComponent from '../../Componet/Chat/RightChat/UsersComponent';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createGroupAPI, getChatsAPI, getGroupChatMessagesAPI, getUsersAPI, sendGroupMessageAPI, sendMessageAPI, sendTypingNotificationAPI } from '../../Services/APIService';
 import { useSelector } from 'react-redux';
 import ChatLeftComponet from '../../Componet/Chat/LeftChat/ChatLeftComponet';
 import { fetchGroupChatsSuccss, messageSentSuccss, reciveGroupChatMsg, typingMessages } from '../../Store/Action/ChatsAction';
 import {ChatConstants} from '../../Utils/Constansts';
+import { Col, Container, Row } from 'react-bootstrap';
 
 var stompClient = null;
 const ChatContainer = (props) => {
@@ -18,7 +19,7 @@ const ChatContainer = (props) => {
     const [chatType, setChatType] = useState('');
 
     const dispatch = useDispatch();
-    useEffect(() => {
+    useLayoutEffect(() => {
         dispatch(getUsersAPI());
     }, [dispatch]);
     useEffect(() => {
@@ -91,7 +92,8 @@ const ChatContainer = (props) => {
     const connect = () => {
         const Stomp = require("stompjs");
         var SockJS = require("sockjs-client");
-        SockJS = new SockJS("http://localhost:2727/ws");
+        const wsurl = window.location.origin === 'http://localhost:3001' ? "http://localhost:2727/ws" : window.location.origin + "/ws";
+        SockJS = new SockJS(wsurl);
         stompClient = Stomp.over(SockJS);
         stompClient.connect({}, onConnected, onError);
     };
@@ -162,7 +164,7 @@ const ChatContainer = (props) => {
     }
     
     return (
-
+        
         <div className="chat-container">
             <div className="chat-row">
                 <div className="chat-left">
@@ -174,6 +176,7 @@ const ChatContainer = (props) => {
                         openUserChat={openUserChat}
                         users={users}
                         submitCreateGroup={submitCreateGroup}
+                        startChat={startChat}
                     />
                 </div>
                 <div className="chat-middle">
@@ -188,14 +191,14 @@ const ChatContainer = (props) => {
                         sendTypingNotification = {sendTypingNotification}
                     />
                 </div>
-                <div className="chat-right">
+                {/* <div className="chat-right">
                     <UsersComponent
                         startChat={startChat}
                         loginInfo={loginInfo}
                         users={users}
                         chatType={chatType}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
     )

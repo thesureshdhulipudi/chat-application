@@ -10,12 +10,20 @@ const UsersComponent = (props) => {
         console.log(user);
         props.startChat(user);
     }
+    const closeOpenOption  = ()=>{
+        console.log("clicked closeOpenOption")
+        props.closeOpenOption();
+    }
 
     return (
         <div>
             <div className="">
                 <div className="chat-right-header">
-                    Users
+                   <spnan className="c-all-users">All Users</spnan>
+                   <span className="c-back-chat" onClick={closeOpenOption}>X</span>
+                </div>
+                <div>
+                <input className="chat-user-group-search-input" placeholder="Search User" type="text"  />
                 </div>
                 <div className="users-div">
                     {users && users.data && users.data.length ?
